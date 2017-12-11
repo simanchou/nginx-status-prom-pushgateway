@@ -1,0 +1,13 @@
+global:
+  interval: 15 # Set the interval to every 15 seconds. Default is every 1 minute.
+  gateway: 192.168.50.40:9091 # Set the gateway ip and port.
+
+
+target_configs:
+  - job: 'nginx-status'
+    static_configs:
+     - group: 办公室测试
+       env: 测试
+       service: upload
+       targets:
+         - http://192.168.50.40:80/nginx_status
