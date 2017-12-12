@@ -57,7 +57,7 @@ def exportToGateway(nginxStatusUrl, gateway, job, group, instance, host, env, se
                 data += "nginx_status{} {}\n".format("{}state=\"{}\"{}".format("{", k, "}"), nginxStatus[k])
     else:
         data = "nginx_up{} {}\n".format("{}", 0)
-    #print(data)
+    print(data)
     r = requests.put(gwUrl, data=data)
     return r.text
 
@@ -79,5 +79,8 @@ if __name__ == "__main__":
                 for instance in j["targets"]:
                     nginxStatusUrl = instance
                     instance = instance.split("/")[2]
+                    print(nginxStatusUrl)
+                    print(instance)
+                    print("#" * 80)
                     exportToGateway(nginxStatusUrl,gateway,job,group,instance,host,env,service)
         time.sleep(interval)
