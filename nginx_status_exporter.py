@@ -12,7 +12,7 @@ import time
 
 
 def getConf(file="conf.yml"):
-    conf_file = os.path.join(os.path.split(os.path.realpath(__file__))[0], "etc", file)
+    conf_file = os.path.join(os.path.split(os.path.realpath(__file__))[0], file)
     if os.path.exists(conf_file):
         with open(conf_file, "r", encoding="utf-8") as fp:
             conf = yaml.load(fp.read())
